@@ -1,47 +1,29 @@
 import React, {
-	Component
+	Component,
+	Fragment
 } from 'react';
-import 'antd/dist/antd.css';
+import Header from './common/header/index';
+import { GlobalStyle } from './style';
+import { GlobalFont } from './static/iconfont/iconfont';
+import { Provider } from 'react-redux'
+import { BrowserRouter, Route } from 'react-router-dom';
+import Home from './pages/home/index';
+import Detail from './pages/detail/index';
+import Login from './pages/login';
 import store from './store';
-
-import { getTodoList, getInputChangeAction, getAddListItemAction, getDeleteListItemAction } from './store/actionCreators'
-import AppUI from './AppUI';
 class App extends Component {
-	constructor(props) {
-		super(props);
-		this.state = store.getState();
-		this.handleInputChange = this.handleInputChange.bind(this);
-		this.handleStoreChange = this.handleStoreChange.bind(this);
-		store.subscribe(this.handleStoreChange);
-		this.handleClick = this.handleClick.bind(this);
-	}
 	render() {
-		return <AppUI 
-		 	 	 inputValue={this.state.inputValue}
-		 	 	 handleInputChange={this.handleInputChange}
-		 	 	 handleClick={this.handleClick} 
-		 	 	 list={this.state.list}
-		 	 	handleDelete={this.handleDelete}
-				/>;
+		return(<Provider store={store}>
+			<Fragment><GlobalStyle/><GlobalFont/>
+			      	<BrowserRouter>
+      		<div>
+            <Header />
+      			<Route path='/' exact component={Home}></Route>
+      			<Route path='/detail/:id' exact component={Detail}></Route>
+      			  <Route path='/login' exact component={Login}></Route>
+      		</div>
+      	</BrowserRouter></Fragment></Provider>);
 	}
-	handleInputChange(e) {
-		const action = getInputChangeAction(e.target.value);
-		store.dispatch(action)
-	}
-	handleClick() {
-		const action = getAddListItemAction();
-		store.dispatch(action)
-	}
-	handleStoreChange() {
-		this.setState(store.getState())
-	}
-	handleDelete(index) {
-		const action = getDeleteListItemAction(index);
-		store.dispatch(action)
-	}
-	componentDidMount() {
-		const action = getTodoList();
-		store.dispatch(action)
-	}
+
 }
 export default App;

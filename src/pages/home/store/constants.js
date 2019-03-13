@@ -1,0 +1,1 @@
+export const ACTICLE_LIST='home/ACTICLE_LIST';
