@@ -2,6 +2,7 @@ import React, {
 	Component
 } from 'react';
 import { connect } from 'react-redux';
+import {withRouter} from 'react-router-dom'
 import {
 	DetailWrapper,
 	Title,
@@ -34,4 +35,4 @@ const mapDispatch=(dispatch)=>({
 		dispatch(actionCreators.getDetail(id))
 	}
 })
-export default connect(mapState,mapDispatch)(Detail);
+export default connect(mapState,mapDispatch)(withRouter(Detail));

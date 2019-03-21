@@ -8,7 +8,7 @@ import { GlobalFont } from './static/iconfont/iconfont';
 import { Provider } from 'react-redux'
 import { BrowserRouter, Route } from 'react-router-dom';
 import Home from './pages/home/index';
-import Detail from './pages/detail/index';
+import Detail from './pages/detail/loadable.js';
 import Login from './pages/login';
 import store from './store';
 class App extends Component {

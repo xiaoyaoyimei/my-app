@@ -24,7 +24,7 @@ export const NavItem=styled.div`
     font-size: 17px;
     line-height: 56px;
 	&.left{
-		float:left
+		display:inline-block;
 	}
 	&.right{
 		float:right
