@@ -1,1 +1,1 @@
-export const DEATIL='detail/DEATIL'
+export const CHANGE_DETAIL = 'detail/CHANGE_DETAIL';

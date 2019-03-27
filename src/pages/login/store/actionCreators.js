@@ -1,19 +1,25 @@
 import axios from 'axios';
 import * as constants from './constants';
-export const loginData = (result) => ({
-	type: constants.LOGIN,
-	result
-});
-export const login = (a, p) => {
-			return(dispatch) => {
-				axios.post('/api/login', {
-					userName: a,
-					password: p
-				}).then((res) => {
-					if(res.data.code==='200'){
-						dispatch(loginData(true))
-					}
-					
-				})
+
+const changeLogin = () => ({
+	type: constants.CHANGE_LOGIN,
+	value: true
+})
+
+export const logout = () => ({
+	type: constants.LOGOUT,
+	value: false
+})
+
+export const login = (accout, password) => {
+	return (dispatch) => {
+		axios.get('api/login.json?account=' + accout + '&password=' + password).then((res) => {
+			const result = res.data.data;
+			if (result) {
+				dispatch(changeLogin())
+			}else {
+				alert('登陆失败')
 			}
-		}
+		})
+	}
+}

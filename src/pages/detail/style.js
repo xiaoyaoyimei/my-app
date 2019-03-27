@@ -1,19 +1,31 @@
 import styled from 'styled-components';
-export const DetailWrapper = styled.div `
-	width:620px;
-	margin:20px auto 0;
-	height:100%;
-`
-export const Title=styled.h3`
-	word-break: break-word!important;
-    margin: 20px 0;
-    font-size: 34px;
-    font-weight: 700;
-    line-height: 1.3;
-`
-export const Content=styled.p`
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.7;
-    color: #2f2f2f;
-`
+
+export const DetailWrapper = styled.div`
+	overflow: hidden;
+	width: 620px;
+	margin: 0 auto;
+	padding-bottom: 100px;
+`;
+
+export const Header = styled.div`
+	margin: 50px 0 20px 0;
+	line-height: 44px;
+	font-size: 34px;
+	color: #333;
+	font-weight: bold;
+`;
+
+export const Content = styled.div`
+	color: ##2f2f2f;
+	img {
+		width: 100%;
+	}
+	p {
+		margin: 25px 0;
+		font-size: 16px;
+		line-height: 30px;
+	}
+	b {
+		font-weight: bold;
+	}
+`;
